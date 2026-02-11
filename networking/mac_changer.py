@@ -1,8 +1,14 @@
 #i/usr/bin/env python3
-
+import os
+import sys
 import subprocess
 import argparse
 
+if os.getuid() != 0:
+    print("[-] This script requires Sudo privileges.")
+    sys.exit()
+
+    
 def get_arguments():
     """
     Parses command line arguments for the interface and new MAC address.
@@ -35,17 +41,11 @@ def change_mac(interface, new_mac):
     except FileNotFoundError:
         print("[-] Error: 'ifconfig' command not found.")
         print("    This script relies on Linux tools. Please run a compatible OS (e.g., Ubuntu, Kali).")
-    except PermissionError:
-        print("[-] Error: Permission denied. Run this script with 'sudo'.")
-        
+
 # --- Main Execution ---
 if __name__ == "__main__":
     # 1. Get inputs
     options = get_arguments()
-
-    # Print them to verify (Debug step)
-    # print(f"[+] Interface: {options.interface}")
-    # print(f"[+] New MAC:")
     
     # 2. execute the change
     change_mac(options.interface, options.new_mac)
