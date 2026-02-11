@@ -1,4 +1,4 @@
-#i/usr/bin/env python3
+#!/usr/bin/env python3
 import os
 import sys
 import subprocess
@@ -8,7 +8,7 @@ if os.getuid() != 0:
     print("[-] This script requires Sudo privileges.")
     sys.exit()
 
-    
+
 def get_arguments():
     """
     Parses command line arguments for the interface and new MAC address.
