@@ -42,10 +42,6 @@ def change_mac(interface, new_mac):
 if __name__ == "__main__":
     # 1. Get inputs
     options = get_arguments()
-
-    # Print them to verify (Debug step)
-    # print(f"[+] Interface: {options.interface}")
-    # print(f"[+] New MAC:")
     
     # 2. execute the change
     change_mac(options.interface, options.new_mac)
